@@ -1,0 +1,257 @@
+{
+	"Sugar.RetrieveBean": {
+		"scope": "php",
+		"prefix": "sugrb",
+		"body": [
+			"BeanFactory::retrieveBean('$1', '$2', array('disable_row_level_security' => true));",
+		],
+		"description": "Sugar Bean Factory Record Fetch"
+	},
+
+	"Sugar.GetRelationship": {
+		"scope": "php",
+		"prefix": "sugrel",
+		"body": [
+			"if (${1:\\$bean}->load_relationship('$2')) {",
+			"    //Fetch related beans",
+			"    \\$relatedBeans = ${1:\\$bean}->$2->getBeans();",
+			"}"
+		],
+		"description": "Sugar Bean Factory Fetch Relationship"
+	},
+
+	"Sugar.LogicHookDefinition": {
+		"scope": "php",
+		"prefix": "suglhd",
+		"body": [
+			"\\$hook_array['${1|before_save,after_save|}'][] = array(",
+			"        '${2:1}',",
+			"        '$description',",
+			"        'custom/modules/$module/logic_hooks/$file.php',",
+			"        '$class',",
+			"        '$method'",
+			");"
+		],
+		"description": "Sugar Logic Hook Definition"
+	},
+	"Sugar.LogicHook": {
+		"scope": "php",
+		"prefix": "suglh",
+		"body": [
+			"class $className",
+			"    {",
+			"        function $methodName(\\$bean, \\$event, \\$arguments)",
+			"        {",
+			"            $logic",
+			"        }",
+			"    }"
+		],
+		"description": "Sugar Logic Hook"
+	},
+	"Sugar.CustomEndpoint": {
+		"scope": "php",
+		"prefix": "sugapi",
+		"body": [
+			"if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');",
+			"",
+			"class $1 extends SugarApi",
+			"{",
+			"    public function registerApiRest()",
+			"    {",
+			"        return array(",
+			"            //GET",
+			"            '$1' => array(",
+			"                //request type",
+			"                'reqType' => '$2',",
+			"",
+			"                //set authentication",
+			"                'noLoginRequired' => false,",
+			"",
+			"                //endpoint path",
+			"                'path' => array('$3','?'),",
+			"",
+			"                //endpoint variables",
+			"                'pathVars' => array('','data'),",
+			"",
+			"                //method to call",
+			"                'method' => '$6',",
+			"",
+			"                //short help string to be displayed in the help documentation",
+			"                'shortHelp' => '$description',",
+			"",
+			"                //long help to be displayed in the help documentation",
+			"                'longHelp' => '$descrription',",
+			"            ),",
+			"        );",
+			"    }",
+			"",
+			"    /**",
+			"     * Method to be used for my MyEndpoint/GetExample endpoint",
+			"     */",
+			"    public function $6(\\$api, \\$args)",
+			"    {",
+			"        //custom logic",
+			"        return \\$args;",
+			"    }",
+			"",
+			"}"
+		],
+		"description": "SugarCRM custom API definition"
+	},
+	"Sugar.CustomScheduler": {
+		"scope": "php",
+		"prefix": "sugsched",
+		"body": [
+			"array_push(\\$job_strings, '$1');",
+			"function $1()",
+			"{",
+			"    //$logic",
+			"    //return true for completed",
+			"    return true;",
+			"}"
+		],
+		"description": "SugarCRM custom scheduler definition"
+	},
+	"Sugar.CustomSchedulerLang": {
+		"scope": "php",
+		"prefix": "sugschedl",
+		"body": [
+			"\\$mod_strings['LBL_$1'] = '$2';"
+		],
+		"description": "SugarCRM custom scheduler definition"
+	},
+	"Sugar.SugarQuery": {
+		"scope": "php",
+		"prefix": "sugquery",
+		"body": [
+			"\\$sugarQuery = new SugarQuery();",
+			"\\$sugarQuery->from(BeanFactory::newBean('$1'), array('team_security' => false));",
+			"\\$sugarQuery->select(array('${2:id}'));",
+			"\\$sugarQuery->where()->equals('$3', '$4');",
+			"\\$result = \\$sugarQuery->execute();",
+		],
+		"description": "SugarCRM starter sugar query"
+	},
+	"Sugar.ViewExtension": {
+		"prefix": "sugview",
+		"body": [
+			"({",
+			"    extendsFrom: '${1|RecordView,CreateView|}',",
+			"",
+			"    /**",
+			"     * @inheritdoc",
+			"     */",
+			"    initialize: function(options) {",
+			"        this.plugins = _.union(this.plugins || [], ['HistoricalSummary']);",
+			"        this._super('initialize', [options]);",
+			"        $2",
+			"    }",
+			"})"
+		],
+		"description": "SugarCRM record/create view extension"
+	},
+	"Sugar.JSAPI": {
+		"prefix": "sugjsapi",
+		"body": [
+			"url = app.api.buildURL(\"$1\");",
+			"app.api.call('${2:read}', url, ${3:null}, {    ",
+			"    success: _.bind(function(response) {    ",
+			"        // here is your success code    ",
+			"        console.log(\"Response\", response);    ",
+			"    }, this),    ",
+			"    error: _.bind(function(error) {    ",
+			"        // here is your error code    ",
+			"        console.log(\"Error\", error);    ",
+			"    }, this),    ",
+			"});  "
+		],
+		"description": "SugarCRM API Call in JS file"
+	},
+	"Sugar.Log": {
+		"prefix": "suglog",
+		"body": [
+			"\\$GLOBALS['log']->fatal(\"$1\");"
+		],
+		"description": "SugarCRM Write Fatal Log"
+	},
+	"Sugar.Script": {
+		"scope": "php",
+		"prefix": "sugscript",
+		"body": [
+			"if (!defined('sugarEntry')) {",
+			"   define('sugarEntry', true);",
+			"}",
+			"//change directories to where this file is located.",
+			"chdir(dirname(__FILE__));",
+			"define('ENTRY_POINT_TYPE', 'api');",
+			"require_once('include/entryPoint.php');",
+			"\\$sapi_type = php_sapi_name();",
+			"if (substr(\\$sapi_type, 0, 3) != 'cli') {",
+			"        sugar_die(\"cron.php is CLI only.\");",
+			"}",
+			"SugarMetric_Manager::getInstance()->setMetricClass('background')->setTransactionName('cron');",
+			"if (empty(\\$current_language)) {",
+			"        \\$current_language = \\$sugar_config['default_language'];",
+			"}",
+			"\\$app_list_strings = return_app_list_strings_language(\\$current_language);",
+			"\\$app_strings = return_application_language(\\$current_language);",
+			"global \\$current_user, \\$timedate,\\$app_list_strings;",
+			"\\$current_user = BeanFactory::newBean('Users');",
+			"\\$current_user->getSystemUser();",
+			"set_time_limit(0);",
+			"",
+			""
+		],
+		"description": "SugarCRM Script to run custom code"
+	},
+	"Sugar.SQL": {
+		"scope": "php",
+		"prefix": "sugsql",
+		"body": [
+			"\\$sql = \"$1\";",
+			"",
+			"// query db",
+			"\\$result = \\$GLOBALS['db']->query(\\$sql);",
+			"",
+			"// fetch results",
+			"while(\\$row = \\$GLOBALS['db']->fetchByAssoc(\\$result)){",
+			  "",
+			"}"
+
+		],
+		"description": "SugarCRM direct db query"
+	},
+
+	"Sugar.Vardef": {
+		"prefix": "sugvardef",
+		"scope": "php",
+		"body": [
+		  "\\$dictionary['$1']['fields']['$2']['name'] = '$2';",
+		  "\\$dictionary['$1']['fields']['$2']['vname'] = 'LBL_$3';",
+		  "\\$dictionary['$1']['fields']['$2']['type'] = 'varchar';",
+		  "\\$dictionary['$1']['fields']['$2']['enforced'] = '';",
+		  "\\$dictionary['$1']['fields']['$2']['dependency'] = '';",
+		  "\\$dictionary['$1']['fields']['$2']['required'] = false;",
+		  "\\$dictionary['$1']['fields']['$2']['massupdate'] = '0';",
+		  "\\$dictionary['$1']['fields']['$2']['default'] = '';",
+		  "\\$dictionary['$1']['fields']['$2']['no_default'] = false;",
+		  "\\$dictionary['$1']['fields']['$2']['comments'] = 'Example Varchar Vardef';",
+		  "\\$dictionary['$1']['fields']['$2']['help'] = '';",
+		  "\\$dictionary['$1']['fields']['$2']['importable'] = 'true';",
+		  "\\$dictionary['$1']['fields']['$2']['duplicate_merge'] = 'disabled';",
+		  "\\$dictionary['$1']['fields']['$2']['duplicate_merge_dom_value'] = '0';",
+		  "\\$dictionary['$1']['fields']['$2']['audited'] = false;",
+		  "\\$dictionary['$1']['fields']['$2']['reportable'] = true;",
+		  "\\$dictionary['$1']['fields']['$2']['unified_search'] = false;",
+		  "\\$dictionary['$1']['fields']['$2']['merge_filter'] = 'disabled';",
+		  "\\$dictionary['$1']['fields']['$2']['calculated'] = false;",
+		  "\\$dictionary['$1']['fields']['$2']['len'] = '255';",
+		  "\\$dictionary['$1']['fields']['$2']['size'] = '20';",
+		  "\\$dictionary['$1']['fields']['$2']['id'] = '$2';",
+		  "\\$dictionary['$1']['fields']['$2']['custom_module'] = '';",
+		  "//required to create the field in the _cstm table",
+		  "\\$dictionary['$1']['fields']['$2']['source'] = 'custom_fields';",
+		],
+		"description": "SugarCRM Vardef Definition"
+	  }
+}
