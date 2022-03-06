@@ -131,6 +131,7 @@
 		"description": "Starter sugar query"
 	},
 	"Sugar.ViewExtension": {
+		"scope":"javascript",
 		"prefix": "sugview",
 		"body": [
 			"({",
@@ -149,6 +150,7 @@
 		"description": "Record/create view extension"
 	},
 	"Sugar.JSAPI": {
+		"scope":"javascript",
 		"prefix": "sugjsapi",
 		"body": [
 			"url = app.api.buildURL(\"$1\");",
@@ -166,6 +168,7 @@
 		"description": "API Call in JS file"
 	},
 	"Sugar.Log": {
+		"scope":"php",
 		"prefix": "suglog",
 		"body": [
 			"\\$GLOBALS['log']->fatal(\"$1\");"
@@ -219,8 +222,8 @@
 		"description": "Direct db query"
 	},
 	"Sugar.Vardef": {
-		"prefix": "sugvardef",
 		"scope": "php",
+		"prefix": "sugvardef",		
 		"body": [
 			"\\$dictionary['$1']['fields']['$2']['name'] = '$2';",
 			"\\$dictionary['$1']['fields']['$2']['vname'] = 'LBL_$3';",
@@ -251,6 +254,7 @@
 		"description": "Vardef Definition"
 	},
 	"Sugar.Alert": {
+		"scope":"javascript",
 		"prefix": "sugalert",
 		"body": [
 			"app.alert.show('${1:message-id}', {",
@@ -263,6 +267,7 @@
 		"description": "Alert Widget"
 	},
 	"Sugar.ConfirmatationAlert": {
+		"scope":"javascript",
 		"prefix": "sugalertconfirm",
 		"body": [
 			"app.alert.show('${1:message-id}', {",
@@ -280,6 +285,7 @@
 		"description": "Confirmation Alert Widget"
 	},
 	"Sugar.ProcessAlert": {
+		"scope":"javascript",
 		"prefix": "sugalertprocess",
 		"body": [
 			"app.alert.show('${1:message-id}', {",
@@ -291,6 +297,7 @@
 	},
 
 	"Sugar.DimissAlert": {
+		"scope":"javascript",
 		"prefix": "sugalertdismiss",
 		"body": [
 		  "app.alert.dismiss('$1');"
