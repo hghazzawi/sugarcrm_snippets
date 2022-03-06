@@ -5,9 +5,8 @@
 		"body": [
 			"BeanFactory::retrieveBean('$1', '$2', array('disable_row_level_security' => true));",
 		],
-		"description": "Sugar Bean Factory Record Fetch"
+		"description": "BeanFactory retrieve bean"
 	},
-
 	"Sugar.GetRelationship": {
 		"scope": "php",
 		"prefix": "sugrel",
@@ -17,9 +16,8 @@
 			"    \\$relatedBeans = ${1:\\$bean}->$2->getBeans();",
 			"}"
 		],
-		"description": "Sugar Bean Factory Fetch Relationship"
+		"description": "BeanFactory fetch relationship"
 	},
-
 	"Sugar.LogicHookDefinition": {
 		"scope": "php",
 		"prefix": "suglhd",
@@ -32,7 +30,7 @@
 			"        '$method'",
 			");"
 		],
-		"description": "Sugar Logic Hook Definition"
+		"description": "Logic hook definition"
 	},
 	"Sugar.LogicHook": {
 		"scope": "php",
@@ -46,7 +44,7 @@
 			"        }",
 			"    }"
 		],
-		"description": "Sugar Logic Hook"
+		"description": "Logic hook class"
 	},
 	"Sugar.CustomEndpoint": {
 		"scope": "php",
@@ -96,7 +94,7 @@
 			"",
 			"}"
 		],
-		"description": "SugarCRM custom API definition"
+		"description": "Custom API definition"
 	},
 	"Sugar.CustomScheduler": {
 		"scope": "php",
@@ -110,7 +108,7 @@
 			"    return true;",
 			"}"
 		],
-		"description": "SugarCRM custom scheduler definition"
+		"description": "Custom scheduler definition"
 	},
 	"Sugar.CustomSchedulerLang": {
 		"scope": "php",
@@ -118,7 +116,7 @@
 		"body": [
 			"\\$mod_strings['LBL_$1'] = '$2';"
 		],
-		"description": "SugarCRM custom scheduler language definition"
+		"description": "Custom scheduler language definition"
 	},
 	"Sugar.SugarQuery": {
 		"scope": "php",
@@ -130,7 +128,7 @@
 			"\\$sugarQuery->where()->equals('$3', '$4');",
 			"\\$result = \\$sugarQuery->execute();",
 		],
-		"description": "SugarCRM starter sugar query"
+		"description": "Starter sugar query"
 	},
 	"Sugar.ViewExtension": {
 		"prefix": "sugview",
@@ -148,7 +146,7 @@
 			"    }",
 			"})"
 		],
-		"description": "SugarCRM record/create view extension"
+		"description": "Record/create view extension"
 	},
 	"Sugar.JSAPI": {
 		"prefix": "sugjsapi",
@@ -165,14 +163,14 @@
 			"    }, this),    ",
 			"});  "
 		],
-		"description": "SugarCRM API Call in JS file"
+		"description": "API Call in JS file"
 	},
 	"Sugar.Log": {
 		"prefix": "suglog",
 		"body": [
 			"\\$GLOBALS['log']->fatal(\"$1\");"
 		],
-		"description": "SugarCRM Write Fatal Log"
+		"description": "Fatal Log"
 	},
 	"Sugar.Script": {
 		"scope": "php",
@@ -202,7 +200,7 @@
 			"",
 			""
 		],
-		"description": "SugarCRM Script to run custom code"
+		"description": "Script to run custom code"
 	},
 	"Sugar.SQL": {
 		"scope": "php",
@@ -215,43 +213,88 @@
 			"",
 			"// fetch results",
 			"while(\\$row = \\$GLOBALS['db']->fetchByAssoc(\\$result)){",
-			  "",
+			"",
 			"}"
-
 		],
-		"description": "SugarCRM direct db query"
+		"description": "Direct db query"
 	},
-
 	"Sugar.Vardef": {
 		"prefix": "sugvardef",
 		"scope": "php",
 		"body": [
-		  "\\$dictionary['$1']['fields']['$2']['name'] = '$2';",
-		  "\\$dictionary['$1']['fields']['$2']['vname'] = 'LBL_$3';",
-		  "\\$dictionary['$1']['fields']['$2']['type'] = 'varchar';",
-		  "\\$dictionary['$1']['fields']['$2']['enforced'] = '';",
-		  "\\$dictionary['$1']['fields']['$2']['dependency'] = '';",
-		  "\\$dictionary['$1']['fields']['$2']['required'] = false;",
-		  "\\$dictionary['$1']['fields']['$2']['massupdate'] = '0';",
-		  "\\$dictionary['$1']['fields']['$2']['default'] = '';",
-		  "\\$dictionary['$1']['fields']['$2']['no_default'] = false;",
-		  "\\$dictionary['$1']['fields']['$2']['comments'] = 'Example Varchar Vardef';",
-		  "\\$dictionary['$1']['fields']['$2']['help'] = '';",
-		  "\\$dictionary['$1']['fields']['$2']['importable'] = 'true';",
-		  "\\$dictionary['$1']['fields']['$2']['duplicate_merge'] = 'disabled';",
-		  "\\$dictionary['$1']['fields']['$2']['duplicate_merge_dom_value'] = '0';",
-		  "\\$dictionary['$1']['fields']['$2']['audited'] = false;",
-		  "\\$dictionary['$1']['fields']['$2']['reportable'] = true;",
-		  "\\$dictionary['$1']['fields']['$2']['unified_search'] = false;",
-		  "\\$dictionary['$1']['fields']['$2']['merge_filter'] = 'disabled';",
-		  "\\$dictionary['$1']['fields']['$2']['calculated'] = false;",
-		  "\\$dictionary['$1']['fields']['$2']['len'] = '255';",
-		  "\\$dictionary['$1']['fields']['$2']['size'] = '20';",
-		  "\\$dictionary['$1']['fields']['$2']['id'] = '$2';",
-		  "\\$dictionary['$1']['fields']['$2']['custom_module'] = '';",
-		  "//required to create the field in the _cstm table",
-		  "\\$dictionary['$1']['fields']['$2']['source'] = 'custom_fields';",
+			"\\$dictionary['$1']['fields']['$2']['name'] = '$2';",
+			"\\$dictionary['$1']['fields']['$2']['vname'] = 'LBL_$3';",
+			"\\$dictionary['$1']['fields']['$2']['type'] = 'varchar';",
+			"\\$dictionary['$1']['fields']['$2']['enforced'] = '';",
+			"\\$dictionary['$1']['fields']['$2']['dependency'] = '';",
+			"\\$dictionary['$1']['fields']['$2']['required'] = false;",
+			"\\$dictionary['$1']['fields']['$2']['massupdate'] = '0';",
+			"\\$dictionary['$1']['fields']['$2']['default'] = '';",
+			"\\$dictionary['$1']['fields']['$2']['no_default'] = false;",
+			"\\$dictionary['$1']['fields']['$2']['comments'] = 'Example Varchar Vardef';",
+			"\\$dictionary['$1']['fields']['$2']['help'] = '';",
+			"\\$dictionary['$1']['fields']['$2']['importable'] = 'true';",
+			"\\$dictionary['$1']['fields']['$2']['duplicate_merge'] = 'disabled';",
+			"\\$dictionary['$1']['fields']['$2']['duplicate_merge_dom_value'] = '0';",
+			"\\$dictionary['$1']['fields']['$2']['audited'] = false;",
+			"\\$dictionary['$1']['fields']['$2']['reportable'] = true;",
+			"\\$dictionary['$1']['fields']['$2']['unified_search'] = false;",
+			"\\$dictionary['$1']['fields']['$2']['merge_filter'] = 'disabled';",
+			"\\$dictionary['$1']['fields']['$2']['calculated'] = false;",
+			"\\$dictionary['$1']['fields']['$2']['len'] = '255';",
+			"\\$dictionary['$1']['fields']['$2']['size'] = '20';",
+			"\\$dictionary['$1']['fields']['$2']['id'] = '$2';",
+			"\\$dictionary['$1']['fields']['$2']['custom_module'] = '';",
+			"//required to create the field in the _cstm table",
+			"\\$dictionary['$1']['fields']['$2']['source'] = 'custom_fields';",
 		],
-		"description": "SugarCRM Vardef Definition"
+		"description": "Vardef Definition"
+	},
+	"Sugar.Alert": {
+		"prefix": "sugalert",
+		"body": [
+			"app.alert.show('${1:message-id}', {",
+			"    level: '${2:success}',",
+			"    messages: '$3',",
+			"    autoClose: true,",
+			"})",
+			""
+		],
+		"description": "Alert Widget"
+	},
+	"Sugar.ConfirmatationAlert": {
+		"prefix": "sugalertconfirm",
+		"body": [
+			"app.alert.show('${1:message-id}', {",
+			"    level: 'confirmation',",
+			"    messages: '$2',",
+			"    autoClose: false,",
+			"    onConfirm: function(){",
+			"         alert('Confirmed!');",
+			"    },",
+			"    onCancel: function(){",
+			"        alert('Cancelled!');",
+			"    }",
+			"});"
+		],
+		"description": "Confirmation Alert Widget"
+	},
+	"Sugar.ProcessAlert": {
+		"prefix": "sugalertprocess",
+		"body": [
+			"app.alert.show('${1:message-id}', {",
+			"    level: 'process',",
+			"    title: '${2:In Process...}' //change title to modify display from 'Loading...'",
+			"});"
+		],
+		"description": "Process Alert Widget"
+	},
+
+	"Sugar.DimissAlert": {
+		"prefix": "sugalertdismiss",
+		"body": [
+		  "app.alert.dismiss('$1');"
+		],
+		"description": "Alert Widget Dismiss"
 	  }
 }
