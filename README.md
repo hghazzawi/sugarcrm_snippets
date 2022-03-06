@@ -3,7 +3,7 @@
 This is a collection of snippets that help template some boiler plate and commonly used SugarCRM code. 
 ## Installation
 
-File -> Preferences -> Use Snippets
+File -> Preferences -> Use Snippets -> New Global Snippets File
 
 Add the contents of SugarCRM.code-snippet and save
 
