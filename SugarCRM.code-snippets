@@ -118,7 +118,7 @@
 		"body": [
 			"\\$mod_strings['LBL_$1'] = '$2';"
 		],
-		"description": "SugarCRM custom scheduler definition"
+		"description": "SugarCRM custom scheduler language definition"
 	},
 	"Sugar.SugarQuery": {
 		"scope": "php",
