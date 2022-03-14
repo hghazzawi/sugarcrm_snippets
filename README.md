@@ -28,3 +28,5 @@ All the commands have the sug prefix so you can just type sug to see all the ava
 - `sugalertconfirm` Confirmation Alert Widget
 - `sugalertprocess` Process Alert Widget
 - `sugalertdismiss` Alert Widget Dismiss
+- `sugdashlet` Custom Dashlet JS
+- `sugardashletdef` Custom Dashlet PHP Definition

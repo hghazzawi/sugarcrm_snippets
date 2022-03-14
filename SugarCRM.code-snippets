@@ -303,5 +303,58 @@
 		  "app.alert.dismiss('$1');"
 		],
 		"description": "Alert Widget Dismiss"
+	  },
+
+	  "Sugar.Dashlet": {
+		"scope": "javascript",
+		"prefix": "sugdashlet",
+		"body": [
+		  "({",
+		  "    // set class name",
+		  "    className: \"$1\",",
+		  "",
+		  "    // add plugins",
+		  "    plugins: ['Dashlet'],",
+		  "",
+		  "    /**",
+		  "     * Init method",
+		  "     *",
+		  "     * @param options",
+		  "     */",
+		  "    initialize: function(options){",
+		  "",
+		  "        this._super('initialize', [options])",
+		  "    },",
+		  "",
+		  "    /**",
+		  "     * LoadData method",
+		  "     */",
+		  "    loadData: function(){",
+		  "",
+		  "        ",
+		  "    }",
+		  "})"
+		],
+		"description": "Custom Dashlet JS"
+	  },
+
+	  "Sugar.DashletDef": {
+		"scope": "php",
+		"prefix": "sugardashletdef",
+		"body": [
+		  "",
+		  "\\$viewdefs['base']['view']['$1'] = array(",
+		  "    'dashlets' => array(",
+		  "        array(",
+		  "            'label' => '$2',",
+		  "            'description' => '$3',",
+		  "            'config' => array()",
+		  "        ),",
+		  "    ),",
+		  ");"
+		],
+		"description": "Custom Dashlet PHP Definition"
 	  }
+
+	  
 }
