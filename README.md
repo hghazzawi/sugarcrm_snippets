@@ -30,3 +30,4 @@ All the commands have the sug prefix so you can just type sug to see all the ava
 - `sugalertdismiss` Alert Widget Dismiss
 - `sugdashlet` Custom Dashlet JS
 - `sugardashletdef` Custom Dashlet PHP Definition
+- `sugmanifest` Module Loader Manifest Definition
