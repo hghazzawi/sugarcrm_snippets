@@ -354,7 +354,42 @@
 		  ");"
 		],
 		"description": "Custom Dashlet PHP Definition"
-	  }
+	  },
+
+	  "Sugar.Manifest": {
+		"scope": "php",
+		"prefix": "sugmanifest",
+		"body": [
+		  "",
+		  "\\$manifest = array(",
+		  "  'acceptable_sugar_flavors' => array('CE', 'PRO', 'CORP', 'ENT', 'ULT'),",
+		  "  'acceptable_sugar_versions' => array(",
+		  "    'exact_matches' => array(),",
+		  "    'regex_matches' => array('(.*?)\\\\.(.*?)\\\\.(.*?)$'),",
+		  "  ),",
+		  "  'author' => '${1:Hasan Ghazzawi}',",
+		  "  'description' => '$2',",
+		  "  'icon' => '',",
+		  "  'is_uninstallable' => true,",
+		  "  'name' => '$3',",
+		  "  'published_date' => '$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE',",
+		  "  'type' => 'module',",
+		  "  'version' => '$4',",
+		  ");",
+		  "",
+		  "\\$installdefs = array(",
+		  "  'id' => '$5',",
+		  "",
+		  "  'copy' => array(",
+		  "     array(",
+		  "       'from' => '<basepath>/$6',",
+		  "       'to' => '',",
+		  "     ),",
+		  "  )",
+		  ");"
+		],
+		"description": "Module Loader Manifest Definition"
+	  },
 
 	  
 }
